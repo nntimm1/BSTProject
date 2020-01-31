@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace BinarySearchTree
 {
-    class BST
+    public class BST
     {
         // ------------------------------- Member Valiable ------------------------------------
        
         public Node root;
-
-
-
 
 
         //  ------------------------------ Constructor -----------------------------------------
@@ -21,21 +18,88 @@ namespace BinarySearchTree
         {
             
         }
-                     
-
         // -------------------------------- Member method --------------------------------------
 
-        public void Add()
+        public void Add(int data)
         {
+            Node current;
+
             if (root == null)
-            { root = data; }
-            else if (root >= data)
-            { Node rightChild = data; }
-            else
-            { Node leftChild == data; }
+            { 
+                root = new Node(data); 
+            }
+
+            current = root;
+
+            while (data >= current.data) 
+            {
+                if (current.rightChild == null)
+                {
+                    current.rightChild = new Node(data);
+                }
+                else
+                {
+                    current = current.rightChild;
+                }
+            }  // rightChild
+
+            while (data <= current.data)
+            {
+                if (current.leftChild == null)
+                {
+                    current.leftChild = new Node(data);
+                }
+                else
+                {
+                    current = current.leftChild;
+                }
+            }  // leftChild
         }
+        public void Search(int data)
+        {
+            Node current;
+            current = root; 
 
+            if (root == null)
+            {
+                Console.WriteLine("No match found.");
+            }
+            else if (root == current)
+            {
+                Console.WriteLine("Match Found");
+            }
 
+            while (data >= current.data)
+            {
+                if (current.rightChild == null)
+                {
+                    Console.WriteLine("No match found.");
+                }
+                else if(data == current.data)
+                {
+                    Console.WriteLine("Match Found");
+                }
+                else
+                {
+                    current = current.rightChild;
+                }
+            }  // rightChild
 
+            while (data <= current.data)
+            {
+                if (current.leftChild == null)
+                {
+                    Console.WriteLine("No match found.");
+                }
+                else if (data == current.data)
+                {
+                    Console.WriteLine("Match Found");
+                }
+                else
+                {
+                    current = current.leftChild;
+                }
+            }  // leftChild
+        }
     }
 }

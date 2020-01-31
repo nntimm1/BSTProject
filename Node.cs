@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BinarySearchTree
 {
-    class Node
+    public class Node
     {
         // ------------------------------- Member Valiable ------------------------------------
-        int data;
-        Node leftChild;
-        Node rightchild;
+        public int data;
+        public Node leftChild;
+        public Node rightChild;
 
 
 
@@ -23,12 +23,7 @@ namespace BinarySearchTree
             this.data = data;
         }
 
-
-
-
-
-
-
+                              
         // -------------------------------- Member method --------------------------------------
 
 

@@ -26,8 +26,10 @@ namespace BinarySearchTree
 
             if (root == null)
             { 
-                root = new Node(data); 
+                root = new Node(data);
+                return;
             }
+          
 
             current = root;
 
@@ -36,6 +38,7 @@ namespace BinarySearchTree
                 if (current.rightChild == null)
                 {
                     current.rightChild = new Node(data);
+                    return;
                 }
                 else
                 {
@@ -48,6 +51,7 @@ namespace BinarySearchTree
                 if (current.leftChild == null)
                 {
                     current.leftChild = new Node(data);
+                    return;
                 }
                 else
                 {
@@ -63,10 +67,12 @@ namespace BinarySearchTree
             if (root == null)
             {
                 Console.WriteLine("No match found.");
+                return;
             }
             else if (root == current)
             {
                 Console.WriteLine("Match Found");
+                return;
             }
 
             while (data >= current.data)
@@ -74,14 +80,17 @@ namespace BinarySearchTree
                 if (current.rightChild == null)
                 {
                     Console.WriteLine("No match found.");
+                    return;
                 }
                 else if(data == current.data)
                 {
                     Console.WriteLine("Match Found");
+                    return;
                 }
                 else
                 {
                     current = current.rightChild;
+                    return;
                 }
             }  // rightChild
 
@@ -90,16 +99,22 @@ namespace BinarySearchTree
                 if (current.leftChild == null)
                 {
                     Console.WriteLine("No match found.");
+                    return;
                 }
                 else if (data == current.data)
                 {
                     Console.WriteLine("Match Found");
+                    return;
                 }
                 else
                 {
                     current = current.leftChild;
+                    return;
                 }
             }  // leftChild
         }
+
     }
+
+    
 }

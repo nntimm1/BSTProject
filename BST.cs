@@ -11,6 +11,7 @@ namespace BinarySearchTree
         // ------------------------------- Member Valiable ------------------------------------
        
         public Node root;
+       
 
 
         //  ------------------------------ Constructor -----------------------------------------
@@ -23,98 +24,77 @@ namespace BinarySearchTree
         public void Add(int data)
         {
             Node current;
-
             if (root == null)
             { 
                 root = new Node(data);
                 return;
             }
-          
 
             current = root;
 
-            while (data >= current.data) 
+            while (current != null) 
             {
-                if (current.rightChild == null)
+                if (data >= current.data)
                 {
-                    current.rightChild = new Node(data);
-                    return;
+                    if (current.rightChild == null)
+                    {
+                        current.rightChild = new Node(data);
+                        return;
+                    }
+                    else
+                    {
+                        current = current.rightChild;
+                    }
                 }
-                else
+                else if (data <= current.data)
                 {
-                    current = current.rightChild;
+                    if (current.leftChild == null)
+                    {
+                        current.leftChild = new Node(data);
+                        return;
+                    }
+                    else
+                    {
+                        current = current.leftChild;
+                    }
                 }
-            }  // rightChild
-
-            while (data <= current.data)
-            {
-                if (current.leftChild == null)
-                {
-                    current.leftChild = new Node(data);
-                    return;
-                }
-                else
-                {
-                    current = current.leftChild;
-                }
-            }  // leftChild
+            }  
         }
         public void Search(int data)
         {
             Node current;
-            current = root; 
+            current = root;
+            while (current != null)
+            {
 
-            if (root == null)
-            {
-                Console.WriteLine("No match found.");
-                return;
-            }
-            else if (root == current)
-            {
-                Console.WriteLine("Match Found");
-                return;
-            }
-
-            while (data >= current.data)
-            {
-                if (current.rightChild == null)
+                if (data == current.data)
                 {
-                    Console.WriteLine("No match found.");
+                    Console.WriteLine("Match Found.");
                     return;
                 }
-                else if(data == current.data)
-                {
-                    Console.WriteLine("Match Found");
-                    return;
-                }
-                else
-                {
-                    current = current.rightChild;
-                    return;
-                }
-            }  // rightChild
-
-            while (data <= current.data)
-            {
-                if (current.leftChild == null)
-                {
-                    Console.WriteLine("No match found.");
-                    return;
-                }
-                else if (data == current.data)
-                {
-                    Console.WriteLine("Match Found");
-                    return;
-                }
-                else
+                else if (data < current.data)
                 {
                     current = current.leftChild;
+                    if (current == null)
+                    {
+                        Console.WriteLine("No Match Found.");
+                    }
+                }
+                else if (data > current.data)
+                {
+                    current = current.rightChild;
+                    if (current == null)
+                    {
+                        Console.WriteLine("No Match Found.");
+                    }
+                }
+                else if (data != current.data)
+                {
+                    Console.WriteLine("No Match Found.");
                     return;
                 }
-            }  // leftChild
+            } 
         }
 
     }
-
-    
 }
